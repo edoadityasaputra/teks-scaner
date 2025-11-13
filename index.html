@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OCR Text Scanner (JS)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>📷 OCR Text Scanner</h1>
+  <input type="file" id="fileInput" accept="image/*">
+  <p id="status">Pilih gambar untuk memulai pemindaian...</p>
+  <pre id="result"></pre>
+
+  <!-- Tesseract.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
