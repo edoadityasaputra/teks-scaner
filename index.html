@@ -3,17 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OCR Text Scanner (JS)</title>
+  <title>OCR Scanner dengan Crop</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- Cropper.js CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css"
+  />
+
 </head>
 <body>
-  <h1>📷 OCR Text Scanner</h1>
-  <input type="file" id="fileInput" accept="image/*">
-  <p id="status">Pilih gambar untuk memulai pemindaian...</p>
+  <h1>📸 OCR Text Scanner + Crop</h1>
+
+  <!-- Upload -->
+  <input type="file" id="fileInput" accept="image/*" />
+  <div id="previewContainer">
+    <img id="preview" alt="Preview" />
+  </div>
+
+  <button id="scanBtn" disabled>🔍 Scan Teks</button>
+
+  <p id="status"></p>
   <pre id="result"></pre>
 
-  <!-- Tesseract.js CDN -->
+  <!-- Cropper.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
+  <!-- Tesseract.js -->
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+  <!-- Custom Script -->
   <script src="script.js"></script>
 </body>
 </html>
