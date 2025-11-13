@@ -1,22 +1,54 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f3f4f6;
+  font-family: "Poppins", sans-serif;
+  background: #f7f9fb;
   text-align: center;
-  padding: 50px;
+  padding: 20px;
 }
 
-input {
-  margin-top: 20px;
+h1 {
+  color: #333;
+}
+
+#previewContainer {
+  margin: 20px auto;
+  width: 90%;
+  max-width: 400px;
+  max-height: 400px;
+  overflow: hidden;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+}
+
+#preview {
+  width: 100%;
+  display: none;
+}
+
+button {
+  padding: 10px 20px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
 }
 
 pre {
-  background: #fff;
-  border: 1px solid #ddd;
-  padding: 15px;
-  width: 80%;
-  margin: 20px auto;
   text-align: left;
   white-space: pre-wrap;
+  background: #fff;
+  padding: 15px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
 }
 
 #status {
