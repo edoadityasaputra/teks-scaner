@@ -1,26 +1,44 @@
+let cropper;
 const input = document.getElementById('fileInput');
-const result = document.getElementById('result');
+const preview = document.getElementById('preview');
+const scanBtn = document.getElementById('scanBtn');
 const status = document.getElementById('status');
+const result = document.getElementById('result');
 
-input.addEventListener('change', async () => {
+input.addEventListener('change', () => {
   const file = input.files[0];
   if (!file) return;
 
-  status.textContent = '⏳ Memproses gambar...';
+  const imageUrl = URL.createObjectURL(file);
+  preview.src = imageUrl;
+  preview.style.display = 'block';
   result.textContent = '';
+  status.textContent = '';
 
-  const image = URL.createObjectURL(file);
+  if (cropper) cropper.destroy();
 
-  // Jalankan OCR
-  const { data: { text } } = await Tesseract.recognize(
-    image,
-    'eng', // bisa diganti 'ind' kalau mau bahasa Indonesia
-    {
-      logger: info => {
-        status.textContent = `Proses: ${Math.round(info.progress * 100)}%`;
-      }
+  cropper = new Cropper(preview, {
+    aspectRatio: NaN,
+    viewMode: 1,
+    autoCropArea: 1,
+  });
+
+  scanBtn.disabled = false;
+});
+
+scanBtn.addEventListener('click', async () => {
+  if (!cropper) return;
+
+  status.textContent = '✂️ Memotong gambar...';
+  const canvas = cropper.getCroppedCanvas();
+
+  status.textContent = '🔍 Memproses OCR...';
+
+  const { data: { text } } = await Tesseract.recognize(canvas, 'eng', {
+    logger: info => {
+      status.textContent = `Proses: ${Math.round(info.progress * 100)}%`;
     }
-  );
+  });
 
   status.textContent = '✅ Selesai!';
   result.textContent = text;
